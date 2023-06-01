@@ -74,7 +74,7 @@ public class RetailConfig {
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
         //lineTokenizer.setNames(new String[] {"id", "abc"});
-        lineTokenizer.setNames(new String[] { "id","sutk","productName","price","date"});
+        lineTokenizer.setNames(new String[] { "storeId","sutk","productName","price","date"});
 
         //, "productName", "price", "date","country"
         //lineTokenizer.setNames( "date", "price","id", "sku","productName");

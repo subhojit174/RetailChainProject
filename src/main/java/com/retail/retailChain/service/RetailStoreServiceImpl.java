@@ -1,5 +1,7 @@
 package com.retail.retailChain.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,11 @@ public class RetailStoreServiceImpl implements RetailStoreService {
 		// TODO Auto-generated method stub
 		
 		return retailRepository.findAll();
+	}
+	@Override
+	public List<RetailStore> findRetailByStoreIdAndDate(Integer store_id, LocalDate date) {
+		// TODO Auto-generated method stub
+		return retailRepository.findAllByIdAndEntryDate(store_id, date);
 	}
 
 }

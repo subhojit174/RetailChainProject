@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,9 +19,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RetailStore {
+	
 	@Id
-	@Column(name="STORE_ID")
+	@GeneratedValue
 	private int id;
+	@Column(name="STORE_ID")
+	private int storeId;
 	@Column(name="SUTK_NAME")
 	private String sutk;
 
