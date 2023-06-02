@@ -22,7 +22,7 @@ public class RetailStore {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 	@Column(name="STORE_ID")
 	private int storeId;
 	@Column(name="SUTK_NAME")

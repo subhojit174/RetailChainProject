@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -21,7 +22,7 @@ public class RetailRepositoryCustomImpl implements RetailRepositoryCustom {
 	EntityManager em;
 
 	@Override
-	public List<RetailStore> findAllByIdAndEntryDate(Integer store_id, LocalDate localDate) {
+	public List<RetailStore> findAllByIdAndEntryDate(Integer store_id, Optional<LocalDate> localDate, Optional<String> productName) {
 	    CriteriaBuilder cb = em.getCriteriaBuilder();
 	    CriteriaQuery<RetailStore> cq = cb.createQuery(RetailStore.class);
 	    Root<RetailStore> retailStore = cq.from(RetailStore.class);
@@ -32,8 +33,12 @@ public class RetailRepositoryCustomImpl implements RetailRepositoryCustom {
 	        predicates.add(cb.equal(retailStore.get("storeId"), store_id));
 
 	    }
-	    if(localDate!=null) {
-	    	predicates.add(cb.equal(retailStore.get("date"), localDate));
+	    if(localDate.isPresent()) {
+	    	predicates.add(cb.equal(retailStore.get("date"), localDate.get()));
+	    }
+	    if(productName.isPresent()) {
+	    	predicates.add(cb.equal(retailStore.get("productName"), productName.get()));
+	    	
 	    }
 	    cq.where(predicates.toArray(new Predicate[0]));
 
