@@ -10,7 +10,7 @@ import com.retail.retailChain.entity.RetailStore;
 public interface RetailStoreService {
 
 	public List<RetailStore> fetchAllRetailStore();
-	public List<RetailStore> findRetailByStoreIdAndDate(Integer store_id, Optional<LocalDate> date, 
+	public List<RetailStore> findRetailByStoreIdAndDate(Optional<Integer> store_id, Optional<LocalDate> date, 
 			Optional<String> productName);
 	public RetailStore updateRetailStore(Long id,RetailStore retailStore);
 }

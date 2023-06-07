@@ -8,6 +8,6 @@ import java.util.Optional;
 import com.retail.retailChain.entity.RetailStore;
 
 public interface RetailRepositoryCustom {
-	List<RetailStore> findAllByIdAndEntryDate(Integer retail_id,Optional<LocalDate> date, Optional<String> productName);
+	List<RetailStore> findAllByIdAndEntryDate(Optional<Integer> retail_id,Optional<LocalDate> date, Optional<String> productName);
 
 }

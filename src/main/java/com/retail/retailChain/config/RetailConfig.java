@@ -60,7 +60,7 @@ public class RetailConfig {
 
         itemReader.setResource(new FileSystemResource(f));
         //itemReader.setResource(new FileSystemResource("src/main/resources/customers.csv"));
-
+        
         itemReader.setName("csvReader");
         itemReader.setLinesToSkip(1);
         itemReader.setLineMapper(lineMapper());
@@ -109,12 +109,17 @@ public class RetailConfig {
     }
 
     @Bean
+    public RepositoryItemWriter writer() {
+    	return new RetailItemWriter(retailRepository).write();
+    }
+    /*@Bean
     public RepositoryItemWriter<RetailStore> writer() {
         RepositoryItemWriter<RetailStore> writer = new RepositoryItemWriter<>();
+        
         writer.setRepository(retailRepository);
         writer.setMethodName("save");
         return writer;
-    }
+    }*/
 
     @Bean
     public Step step1() {
@@ -122,6 +127,7 @@ public class RetailConfig {
         return stepBuilderFactory.get("csv-step").<RetailStore, RetailStore>chunk(10)
                 .reader(reader())
                 .processor(processor())
+                
                 .writer(writer())
                 .taskExecutor(taskExecutor())
                 .build();

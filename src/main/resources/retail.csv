@@ -1,2 +1,4 @@
 storeId,sutk,productName,price,date
-9,abc-4560,Sugar,5000,21-05-2023
+1,abc-4560,Sugar,500,21-05-2023
+2,def-45890,Rice,80,21-05-2023
+3,efg-895,Salt,20,22-05-2023
