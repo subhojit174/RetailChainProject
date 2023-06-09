@@ -85,6 +85,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>retail-chain-management</finalName>
+		
 	</build>
 
 </project>
