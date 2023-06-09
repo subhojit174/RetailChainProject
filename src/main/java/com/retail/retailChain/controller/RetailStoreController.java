@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,11 +27,6 @@ import com.retail.retailChain.service.RetailStoreService;
 @RequestMapping("/retailStore")
 public class RetailStoreController {
     Logger logger = LoggerFactory.getLogger(RetailStoreController.class);
-    StringBuilder sb=new StringBuilder();
-    public RetailStoreController() {
-    	sb.append("/storeId/{id}");
-    	
-    }
     
 	@Autowired
 	private RetailStoreService retailStoreService;
@@ -62,6 +58,7 @@ public class RetailStoreController {
 				  ,Optional.ofNullable(productName));
 	}
 	@PutMapping("/id/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public RetailStore updateRetailStore(@PathVariable Long id,@Valid @RequestBody RetailStore retailStore) {
 		  logger.info("RetailStoreController updateRetailStore method starts");
 
