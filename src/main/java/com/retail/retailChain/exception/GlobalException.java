@@ -4,6 +4,7 @@ import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,15 @@ public class GlobalException{
 		    }	
 	@ExceptionHandler(value 
 		      = { NoRecordFoundException.class })
-		    protected ResponseEntity<String> handleNoRecordFoundExceptionn(
+		    protected ResponseEntity<String> handleNoRecordFoundException(
 		    		NoRecordFoundException request) {
+		        String bodyOfResponse = "No Record Found";
+		        return new ResponseEntity<String>(bodyOfResponse,HttpStatus.NOT_FOUND);
+		    }
+	@ExceptionHandler(value 
+		      = { ObjectNotFoundException.class })
+		    protected ResponseEntity<String> handleObjectNotFoundException(
+		    		ObjectNotFoundException request) {
 		        String bodyOfResponse = "No Record Found";
 		        return new ResponseEntity<String>(bodyOfResponse,HttpStatus.NOT_FOUND);
 		    }

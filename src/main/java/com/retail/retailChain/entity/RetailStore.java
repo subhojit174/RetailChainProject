@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,7 +29,7 @@ public class RetailStore {
 	@Id
 	@GeneratedValue
 	private long id;
-    @NotBlank(message = "Store Id  is mandatory")
+	@NotNull(message = "Store Id  is mandatory")
 	@Column(name="STORE_ID")
 	private int storeId;
     @NotBlank(message = "SUTK  is mandatory")
