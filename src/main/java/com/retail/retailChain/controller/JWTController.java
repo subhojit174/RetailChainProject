@@ -1,9 +1,16 @@
 package com.retail.retailChain.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.retail.retailChain.entity.RetailStore;
+import com.retail.retailChain.repository.RetailRepository;
 import com.retail.retailChain.security.CustomeUserDetailsService;
 import com.retail.retailChain.security.JwtAuthResponse;
 import com.retail.retailChain.security.JwtRequest;
@@ -29,10 +38,11 @@ public class JWTController {
     private CustomeUserDetailsService userDetailsService;
     @Autowired
     private JwtTokenHelper jwtHelper;
-    @PostMapping("/generateToken")
+	    @PostMapping("/generateToken")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest request) throws Exception {
     	logger.info("JWTController generateToken methhod starts");
         try{
+           
             this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken( request.getUsername(),request.getPassword()));
 
         }

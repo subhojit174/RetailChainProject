@@ -27,7 +27,7 @@ import com.retail.retailChain.security.JWTAuthenticationFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public static String[] PUBLIC_URLS = { "/api/v1/auth/**", "/v3/api-docs", "/v2/api-docs", "/swagger-resources/**",
-			"/swagger-ui/**", "/webjars/**" };
+			"/swagger-ui/**", "/webjars/**","/api/kafka/" };
 	@Autowired
 	private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 	@Autowired

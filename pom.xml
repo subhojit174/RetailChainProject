@@ -68,8 +68,11 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
         </dependency>
+        <dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+		</dependency>
 		
 		<dependency>
     		<groupId>mysql</groupId>
@@ -99,6 +102,10 @@
     		<groupId>org.hamcrest</groupId>
     		<artifactId>hamcrest-library</artifactId>
 		</dependency>
+		<dependency>
+    		<groupId>org.springframework.kafka</groupId>
+    		<artifactId>spring-kafka</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -107,6 +114,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>com.retail.retailChain.RetaiChainApplication</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

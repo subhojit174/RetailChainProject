@@ -46,5 +46,6 @@ public class RetailStore {
     @JsonFormat(pattern = "yyyy-MM-dd") 
 	@Column(name="ENTRY_DATE")
 	private LocalDate date;
+    
 
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import com.retail.retailChain.entity.RetailStore;
 import com.retail.retailChain.repository.RetailRepository;
@@ -11,6 +13,7 @@ import com.retail.retailChain.repository.RetailRepository;
 
 public class RetailItemWriter{
 	RetailRepository retailRepository;
+
 	
 	public RetailItemWriter(RetailRepository retailRepository) {
 		super();
